@@ -1,0 +1,47 @@
+import fluidfoam
+import numpy as np
+import os
+
+cwd =  os.getcwd()
+cases = [entry.name for entry in os.scandir() if entry.is_dir()]
+
+mixing_index_final = []
+
+# Loop through every case
+for case in cases:
+    case_path = os.path.join(cwd, case)
+  
+    # Time steps in folder
+    times = [
+        name for name in os.listdir(case_path)
+        if os.path.isdir(os.path.join(case_path, name)) and name.isdigit()
+    ]
+  times = sorted(times, key=int)
+
+  # Read alpha at time 0 and calculate tracer variance at time 0.
+  alpha_0 = fluidfoam.readfield(ID, "0", "alpha.steel")
+  variance_0 = np.var(fluidfoam.readfield(ID, "0", "T")[alpha_0==1])
+
+  mixing_indexes = [] # Create empty array for storing mixing index at each time of the case.
+  # Calculate mixing index at each time step
+  for t in times:
+    tracer_t =  fluidfoam.readfield(ID, f"{t}", "T") # Read tracer at time t.
+    tracer_sub = tracer_t[alpha_0==1] # Only store tracer concentration at points in the mesh which are initially steel submerged (ignore atmosphere).
+    variance_t = np.var(tracer_sub)
+    mixing_index_t = (1 - (variance_t / variance_0)**0.5)
+    mixing_indexes.append(mixing_index_t)
+
+  # Append time-averaged mixing index to list
+  mixing_index_final.append(np.mean(mixing_indexes))
+
+
+# Write results to text file
+output_file = "mixing_results.txt"
+with open(output_file, "w") as f:
+    f.write("case\tmixing_index\n")  # header
+    for case, m in zip(cases, mixing_index_final):
+        f.write(f"{case}\t{m:.6f}\n")
+
+
+  
+    
