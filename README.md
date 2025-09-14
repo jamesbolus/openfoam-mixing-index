@@ -11,8 +11,9 @@ pip install -r requirements.txt
 ```
 
 ## Theory
+Mixing Index, $\Lambda_{MI}$ at time t, over a tracer field T, is calculated as follows:
 $$
-\Lambda_{MI}\big|_{t=t} = 1 - \sqrt{\frac{\mathrm{Var}(T|_{t=t})}{\mathrm{Var}(T|_{t=0})}}
+\Lambda_{MI}\big_{t=t} = 1 - \sqrt{\frac{\mathrm{Var}(T_{t=t})}{\mathrm{Var}(T_{t=0})}}
 $$
 
 ## Usage
