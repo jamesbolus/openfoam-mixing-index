@@ -16,6 +16,7 @@ Mixing Index, $\Lambda_{MI}$ at time t, over a tracer field T, is calculated as 
 $$
 \Lambda_{MI}\big|_{time=t} = 1 - \sqrt{\frac{\mathrm{Var}(T_{time=t})}{\mathrm{Var}(T_{time=0})}}
 $$
+
 The mixing index is a robust measure of mixing within a geometry, sensitive to time taken for tracer homogenisation, quality of tracer homogenisation and the presence of “dead zones” (where there is limited mixing) in the geometry.
 
 ## Usage
