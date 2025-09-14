@@ -25,7 +25,7 @@ Place file in folder which contains all the cases and run the script. The two sc
 
 #### mixing_index_main.py
 This is intended for the following scenarios:
-- A two-phase case in which one phase is being agitated by the other (originally, steel agitated by argon gas)
+- A case in which one phase is being agitated, if multiphase no mixing between phases is of interest (originally, steel agitated by argon gas)
 - Mixing in the entire geometry is of interest
 - A tracer field "T" is present
 
