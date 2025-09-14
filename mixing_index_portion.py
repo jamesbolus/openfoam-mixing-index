@@ -19,13 +19,13 @@ for case in cases:
   times = sorted(times, key=int)
 
   # Read alpha at time 0 and calculate tracer variance at time 0.
-  alpha_0 = fluidfoam.readfield(ID, "0", "alpha.steel")
-  variance_0 = np.var(fluidfoam.readfield(ID, "0", "T")[alpha_0==1])
+  alpha_0 = fluidfoam.readfield(case, "0", "alpha.steel")
+  variance_0 = np.var(fluidfoam.readfield(case, "0", "T")[alpha_0==1])
 
   mixing_indexes = [] # Create empty array for storing mixing index at each time of the case.
   # Calculate mixing index at each time step
   for t in times:
-    tracer_t =  fluidfoam.readfield(ID, f"{t}", "T") # Read tracer at time t.
+    tracer_t =  fluidfoam.readfield(case, f"{t}", "T") # Read tracer at time t.
     tracer_sub = tracer_t[alpha_0==1] # Only store tracer concentration at points in the mesh which are initially steel submerged (ignore atmosphere).
     variance_t = np.var(tracer_sub)
     mixing_index_t = (1 - (variance_t / variance_0)**0.5)
