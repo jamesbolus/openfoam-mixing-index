@@ -1,6 +1,6 @@
 # openfoam-mixing-index
 
-A script that calculates the time-averaged mixing index for each case in the directory.
+A script that calculates the time-averaged mixing index for each case in the directory. Mixing index is a statistical measure for the mixing intensity of a tracer element, calculated using the dispersion (variance) of the tracer field.
 
 ## Installation
 
@@ -10,6 +10,10 @@ Install the required Python packages using pip:
 pip install -r requirements.txt
 ```
 
+## Theory
+$$
+\Lambda_{MI}\big|_{t=t} \;=\; 1 - \sqrt{\frac{\operatorname{Var}(T|_{t=t})}{\operatorname{Var}(T|_{t=0})}}
+$$
 
 ## Usage
 
