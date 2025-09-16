@@ -2,9 +2,9 @@
 
 A script that calculates the time-averaged mixing index for each case in the directory. Mixing index is a statistical measure for the mixing intensity of a tracer element, calculated using the dispersion (variance) of the tracer field.
 
-## Installation
+## Requirements
 
-Install the required Python packages using pip:
+The latest version of Python must be installed locally. Next, install the required Python packages using pip:
 
 ```bash
 pip install -r requirements.txt
